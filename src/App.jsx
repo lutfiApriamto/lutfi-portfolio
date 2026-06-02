@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 const App = () => {
   const [showIntro, setShowIntro] = useState(false);
   const [introComplete, setIntroComplete] = useState(false);
+  const [initialRenderNoIntro, setInitialRenderNoIntro] = useState(false);
 
   useEffect(() => {
     const hasSeenIntro = sessionStorage.getItem("intro_seen");
@@ -14,6 +15,7 @@ const App = () => {
       setShowIntro(true);
     } else {
       setIntroComplete(true);
+      setInitialRenderNoIntro(true);
     }
   }, []);
 
@@ -29,7 +31,7 @@ const App = () => {
         <Route path="/" element={<Home isReady={introComplete} />} />
       </Routes>
 
-      {introComplete && <Navbar />}
+      {introComplete && <Navbar wasIntroShown={!initialRenderNoIntro} />}
       {showIntro && <IntroScreen onComplete={handleIntroComplete} />}
     </>
   );

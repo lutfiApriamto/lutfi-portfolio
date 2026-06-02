@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../../context/ThemeContext";
 import { Link, useLocation } from "react-router-dom";
-import { FiGithub, FiLinkedin, FiInstagram } from "react-icons/fi"; // Import Ikon
+import { FiGithub, FiLinkedin, FiInstagram } from "react-icons/fi";
 
 const menuItems = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Projects", href: "/projects" },
-  { label: "Let's Talk", href: "/songs" },
+  { label: "Songs", href: "/songs" },
 ];
 
 const socialLinks = [
@@ -34,7 +34,6 @@ const socialLinks = [
     name: "instagram",
     icon: FiInstagram, 
     url: "https://www.instagram.com/lutfiamto/",
-    // UBAH BAGIAN INI: Ganti warna merah pink khas Instagram
     hoverColorDark: "#E1306C", 
     hoverColorLight: "#E1306C",
     glowDark: "rgba(225, 48, 108, 0.4)",
@@ -179,7 +178,6 @@ const FullscreenMenu = ({ isOpen, onClose, isDark }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [hoveredSocial, setHoveredSocial] = useState(null);
 
-  // Subtle Gradient Backgrounds
   const menuBgDark = "radial-gradient(circle at center, #1a1a1a 0%, #050505 100%)";
   const menuBgLight = "radial-gradient(circle at center, #ffffff 0%, #f0f0f0 100%)";
   
@@ -199,10 +197,9 @@ const FullscreenMenu = ({ isOpen, onClose, isDark }) => {
           initial="closed"
           animate="open"
           exit="closed"
-          className="fixed inset-0 z-9990 flex flex-col justify-center items-center"
+          className="fixed inset-0 z-[9990] flex flex-col justify-center items-center"
           style={{ background, color: textColor }}
         >
-          {/* Centered Navigation Items */}
           <nav className="flex flex-col items-center justify-center gap-4 md:gap-6 text-center select-none w-full">
             {menuItems.map((item, i) => {
               const isActive = location.pathname === item.href;
@@ -239,29 +236,23 @@ const FullscreenMenu = ({ isOpen, onClose, isDark }) => {
             })}
           </nav>
 
-          {/* Responsive Footer Navigation */}
           <div className="absolute bottom-8 left-6 right-6 md:bottom-10 md:left-16 md:right-16 flex flex-col md:flex-row justify-between items-center gap-4">
-            
-            {/* Identity & Copyright */}
             <div className="flex items-center gap-2 text-center md:text-left text-[10px] md:text-[11px] font-medium tracking-[0.2em] uppercase opacity-60">
               <span className="hidden md:inline">ID</span>
               <span className="hidden md:inline opacity-40">•</span>
               <span>MUHAMMAD LUTFI APRIAMTO © 2026</span>
             </div>
 
-            {/* Social Links (Icons with interactive hover & brand colors) */}
             <div className="flex items-center gap-5">
               {socialLinks.map((social, index) => {
                 const Icon = social.icon;
                 const isHovered = hoveredSocial === index;
                 
-                // Menentukan warna aksen berdasarkan status hover dan tema
                 let accentColor = "currentColor";
                 let shadowGlow = "none";
                 let borderColor = "transparent";
 
                 if (isHovered) {
-                  // CUKUP GUNAKAN LOGIKA SEDERHANA INI
                   accentColor = isDark ? social.hoverColorDark : social.hoverColorLight;
                   borderColor = accentColor;
                   shadowGlow = `0 4px 15px ${isDark ? social.glowDark : social.glowLight}`;
@@ -276,27 +267,22 @@ const FullscreenMenu = ({ isOpen, onClose, isDark }) => {
                     className="p-2 rounded-full border border-transparent relative overflow-hidden flex items-center justify-center"
                     onMouseEnter={() => setHoveredSocial(index)}
                     onMouseLeave={() => setHoveredSocial(null)}
-                    whileHover={{ 
-                      scale: 1.15,
-                      y: -2,
-                    }}
+                    whileHover={{ scale: 1.15, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     initial={{ opacity: 0.6 }}
                     animate={{ 
                       opacity: 1,
                       borderColor: borderColor,
                       boxShadow: shadowGlow,
-                      color: isHovered ? accentColor : "inherit" // Ubah warna ikon di sini
+                      color: isHovered ? accentColor : "inherit"
                     }}
                     transition={{ type: "spring", stiffness: 400, damping: 17 }}
                   >
-                    {/* SVG Gradient sudah dihapus karena tidak dibutuhkan lagi */}
                     <Icon size={20} />
                   </motion.a>
                 );
               })}
             </div>
-            
           </div>
         </motion.div>
       )}
@@ -307,7 +293,7 @@ const FullscreenMenu = ({ isOpen, onClose, isDark }) => {
 // ============================================
 // COMPONENT: MAIN NAVBAR
 // ============================================
-const Navbar = () => {
+const Navbar = ({ wasIntroShown }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const isDark = theme === "dark";
@@ -321,11 +307,57 @@ const Navbar = () => {
     return () => { document.body.style.overflow = "auto"; };
   }, [isOpen]);
 
+  const bounceTransition = {
+    type: "spring",
+    damping: 11,     
+    stiffness: 120,  
+    mass: 1,         
+  };
+
+  const delayOffset = wasIntroShown ? 0.45 : 0;
+
+  // ============================================
+  // LOGIKA TRANSISI TEMA YANG SANGAT HALUS
+  // ============================================
+  const handleThemeToggle = () => {
+    // Mengecek apakah browser mendukung View Transitions API
+    if (!document.startViewTransition) {
+      // Fallback untuk browser lama: langsung ubah tema (akan ditangani oleh CSS transition biasa)
+      toggleTheme();
+      return;
+    }
+
+    // Menggunakan API bawaan browser untuk melakukan crossfade sempurna 
+    // antara DOM sebelum berubah tema dan sesudah berubah tema.
+    document.startViewTransition(() => {
+      toggleTheme();
+    });
+  };
+
   return (
     <>
-      <div className="fixed top-0 right-0 z-9999 p-4 md:p-10 flex gap-3 md:gap-4 pointer-events-auto">
-        <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
-        <HamburgerButton isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} isDark={isDark} />
+      <div className="fixed top-0 right-0 z-[9999] p-4 md:p-10 flex gap-3 md:gap-4 pointer-events-none">
+        
+        {/* Tombol Tema */}
+        <motion.div
+          initial={{ y: -160, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ ...bounceTransition, delay: delayOffset }}
+          className="pointer-events-auto"
+        >
+          <ThemeToggle isDark={isDark} onToggle={handleThemeToggle} />
+        </motion.div>
+
+        {/* Tombol Hamburger */}
+        <motion.div
+          initial={{ y: -160, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ ...bounceTransition, delay: delayOffset + 0.15 }}
+          className="pointer-events-auto"
+        >
+          <HamburgerButton isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} isDark={isDark} />
+        </motion.div>
+
       </div>
 
       <FullscreenMenu isOpen={isOpen} onClose={() => setIsOpen(false)} isDark={isDark} />
