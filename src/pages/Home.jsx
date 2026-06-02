@@ -1,10 +1,9 @@
 import Hero from "../components/landingPage/Hero";
 
-
-const Home = () => {
+const Home = ({ isReady }) => {
   return (
-    <main className="min-h-screen bg-[#050505]">
-      <Hero />
+    <main>
+      <Hero isReady={isReady} />
     </main>
   );
 };

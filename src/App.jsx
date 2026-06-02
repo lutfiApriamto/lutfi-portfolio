@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import IntroScreen from "./components/layout/IntroScreen";
+import Navbar from "./components/layout/Navbar";
 import Home from "./pages/Home";
 
 const App = () => {
@@ -24,12 +25,11 @@ const App = () => {
 
   return (
     <>
-      {/* Home selalu dirender di background */}
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home isReady={introComplete} />} />
       </Routes>
 
-      {/* Intro overlay di atas home */}
+      {introComplete && <Navbar />}
       {showIntro && <IntroScreen onComplete={handleIntroComplete} />}
     </>
   );
