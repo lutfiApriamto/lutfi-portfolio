@@ -4,7 +4,6 @@ import { useTheme } from "../../context/ThemeContext";
 import { useNavigate } from "react-router-dom";
 import { FiArrowUpRight } from "react-icons/fi";
 
-// ── ANIMATED COUNTER ──
 const Counter = ({ value, suffix = "", isInView }) => {
   const [count, setCount] = useState(0);
   useEffect(() => {
@@ -27,7 +26,6 @@ const Counter = ({ value, suffix = "", isInView }) => {
   return <>{count}{suffix}</>;
 };
 
-// ── STAT CARD ──
 const StatCard = ({ value, suffix, label, delay, isInView, isDark }) => (
   <motion.div
     initial={{ opacity: 0, y: 24 }}
@@ -60,7 +58,6 @@ const StatCard = ({ value, suffix, label, delay, isInView, isDark }) => (
   </motion.div>
 );
 
-// ── SKILL TAG ──
 const SkillTag = ({ label, delay, isInView, isDark }) => (
   <motion.span
     initial={{ opacity: 0, scale: 0.88 }}
@@ -78,7 +75,6 @@ const SkillTag = ({ label, delay, isInView, isDark }) => (
   </motion.span>
 );
 
-// ── MAIN COMPONENT ──
 const AboutSection = () => {
   const { theme } = useTheme();
   const isDark = theme === "dark";
@@ -87,18 +83,15 @@ const AboutSection = () => {
   const sectionRef = useRef(null);
   const contentRef = useRef(null);
 
-  // ── Parallax scroll ──
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
   });
 
-  // Background orbs parallax
-  const orb1Y = useTransform(scrollYProgress, [0, 1], ["10%", "-15%"]);
-  const orb2Y = useTransform(scrollYProgress, [0, 1], ["-5%", "20%"]);
-  const orb3Y = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
+  const orb1Y = useTransform(scrollYProgress, [0, 1], ["20%", "-25%"]);
+  const orb2Y = useTransform(scrollYProgress, [0, 1], ["-10%", "40%"]);
+  const orb3Y = useTransform(scrollYProgress, [0, 1], ["10%", "-20%"]);
 
-  // Grid subtle shift
   const gridY = useTransform(scrollYProgress, [0, 1], ["0px", "40px"]);
   const smoothGridY = useSpring(gridY, { stiffness: 60, damping: 20 });
 

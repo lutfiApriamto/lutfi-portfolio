@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { useTheme } from "../../context/ThemeContext";
 
-// ── ANIMATION VARIANTS ──
 const slideRightVariants = {
   hidden: { 
     opacity: 0, 
@@ -51,11 +50,9 @@ const AboutPreview = () => {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
 
-  // ── Animation controls (untuk repeat) ──
   const leftControls = useAnimation();
   const rightControls = useAnimation();
 
-  // ── IntersectionObserver: trigger setiap masuk & keluar ──
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -66,14 +63,13 @@ const AboutPreview = () => {
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
       },
-      { threshold: 0.25 } // trigger saat 25% section terlihat
+      { threshold: 0.25 } 
     );
 
     observer.observe(node);
     return () => observer.disconnect();
   }, []);
 
-  // ── Setiap isVisible berubah, jalankan animasi yang sesuai ──
   useEffect(() => {
     if (isVisible) {
       leftControls.start("visible");
@@ -84,7 +80,6 @@ const AboutPreview = () => {
     }
   }, [isVisible, leftControls, rightControls]);
 
-  // ── Parallax background text ──
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
@@ -95,13 +90,12 @@ const AboutPreview = () => {
     <section
       
       ref={containerRef}
-      className="relative w-full py-24 md:py-32 overflow-hidden flex items-center justify-center transition-colors duration-500"
+      className="relative w-full py-24 md:py-32 overflow-hidden flex items-center justify-center transition-colors duration-500 h-screen"
       style={{
         backgroundColor: isDark ? "#050505" : "#FAF9F6",
         color: isDark ? "#f0f0f0" : "#171717",
       }}
     >
-      {/* ── BACKGROUND PARALLAX TEXT ── */}
       <motion.div
         className="absolute top-1/2 left-0 -translate-y-1/2 z-0 font-black tracking-tighter whitespace-nowrap pointer-events-none select-none"
         style={{
@@ -114,10 +108,8 @@ const AboutPreview = () => {
         LUTFI
       </motion.div>
 
-      {/* ── MAIN CONTENT ── */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-24 flex flex-col md:flex-row items-start justify-between gap-12 md:gap-24">
 
-        {/* SISI KIRI */}
         <motion.div
           variants={slideRightVariants}
           initial="hidden"
@@ -173,7 +165,6 @@ const AboutPreview = () => {
           </button>
         </motion.div>
 
-        {/* SISI KANAN */}
         <motion.div
           variants={slideLeftVariants}
           initial="hidden"

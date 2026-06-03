@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import IntroScreen from "./components/layout/IntroScreen";
 import Navbar from "./components/layout/Navbar";
 import Home from "./pages/Home";
+import About from "./pages/About";
 
 const App = () => {
   const [showIntro, setShowIntro] = useState(false);
@@ -29,6 +30,7 @@ const App = () => {
     <>
       <Routes>
         <Route path="/" element={<Home isReady={introComplete} />} />
+        <Route path="/about" element={<About/>} />
       </Routes>
 
       {introComplete && <Navbar wasIntroShown={!initialRenderNoIntro} />}
