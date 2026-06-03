@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import { FiArrowDown, FiDownload, FiArrowUpRight } from "react-icons/fi";
 import { useTheme } from "../../context/ThemeContext";
@@ -33,9 +33,16 @@ const FloatingDecoration = ({ icon: Icon, delay, className, color, isDark }) => 
   );
 };
 
-const Hero = () => {
+const Hero = ({ isReady }) => {
   const { theme } = useTheme();
   const isDark = theme === "dark";
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (isReady) {
+      controls.start("visible");
+    }
+  }, [isReady, controls]);
 
   // 1. Mouse Tracking Terintegrasi dengan Background
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -257,7 +264,8 @@ const Hero = () => {
           <TypeAnimation
             key={theme}
             sequence={[
-              "MUHAMMAD LUTFI APRIAMTO", 3000,
+              "FRONT END DEVELOPER", 3000,
+              "BACK END DEVELOPER", 3000,
               "FULL-STACK WEB DEVELOPER", 3000,
               "MERN STACK ARCHITECT", 3000,
             ]}
@@ -288,7 +296,7 @@ const Hero = () => {
           <motion.div 
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
+            animate={controls}
             className="w-full flex flex-col items-center z-10"
           >
             <motion.h1 
@@ -296,7 +304,7 @@ const Hero = () => {
               className="text-[13vw] md:text-[8vw] font-black uppercase tracking-tight leading-[0.9] w-full"
               style={{ fontFamily: "'Space Grotesk', sans-serif", color: isDark ? "#ffffff" : "#171717" }}
             >
-              FULL-STACK
+              Lutfi
             </motion.h1>
             
             <motion.h1 
@@ -304,7 +312,7 @@ const Hero = () => {
               className={`text-[13vw] md:text-[8vw] font-black uppercase tracking-tight leading-[0.9] mt-2 mb-8 w-full ${strokeClass}`}
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
-              DEVELOPER
+              Apriamto
             </motion.h1>
             
             {/* Engineering-focused Slogan */}
@@ -368,11 +376,8 @@ const Hero = () => {
 
               {/* Secondary CTA: Download CV (Placeholder Link) */}
               <a
-                href="#download-cv-placeholder"
-                onClick={(e) => {
-                  e.preventDefault();
-                  alert("CV Download Handler Triggered!");
-                }}
+                href="https://drive.google.com/file/d/1c8J_eKqAVW6TT48LawfQt6T1NZS2xzLd/view?usp=sharing"
+                target="_blank"
                 className="group flex items-center gap-2 bg-transparent px-6 py-3.5 font-mono text-xs font-bold uppercase tracking-wider transition-all duration-300 border rounded-sm"
                 style={{
                   borderColor: isDark ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.2)",
@@ -426,7 +431,7 @@ const Hero = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="flex items-center gap-4 text-xs tracking-widest uppercase font-bold text-neutral-400 cursor-pointer group">
+        <div onClick={() => document.getElementById("about-section")?.scrollIntoView({ behavior: "smooth" })} className="flex items-center gap-4 text-xs tracking-widest uppercase font-bold text-neutral-400 cursor-pointer group">
           <span className={isDark ? "group-hover:text-white transition-colors" : "group-hover:text-black transition-colors"}>
             Scroll to explore
           </span>
