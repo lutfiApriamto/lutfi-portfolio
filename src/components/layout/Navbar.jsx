@@ -170,6 +170,37 @@ const ThemeToggle = ({ isDark, onToggle }) => {
   );
 };
 
+const BrandLogo = ({ isDark }) => {
+  return (
+    <Link to="/" className="hidden md:block">
+      <motion.div
+        whileHover={{ y: -2 }}
+        whileTap={{ scale: 0.97 }}
+        className="group relative cursor-pointer select-none"
+      >
+        <span
+          className="text-lg md:text-xl font-black tracking-[0.35em]"
+          style={{
+            color: isDark ? "#ffffff" : "#050505",
+          }}
+        >
+          LUTFI
+        </span>
+
+        <motion.div
+          className="absolute left-0 -bottom-1 h-[2px] w-full origin-left"
+          style={{
+            backgroundColor: isDark ? "#ffffff" : "#050505",
+          }}
+          initial={{ scaleX: 0 }}
+          whileHover={{ scaleX: 1 }}
+          transition={{ duration: 0.35 }}
+        />
+      </motion.div>
+    </Link>
+  );
+};
+
 // ============================================
 // COMPONENT: FULLSCREEN MENU
 // ============================================
@@ -336,9 +367,17 @@ const Navbar = ({ wasIntroShown }) => {
 
   return (
     <>
-      <div className="fixed top-0 right-0 z-[9999] p-4 md:p-10 flex gap-3 md:gap-4 pointer-events-none">
-        
+      <div className="fixed top-0 left-0 right-0 z-[9999] p-4 md:p-10 flex justify-between items-center pointer-events-none">
+        <motion.div
+          initial={{ y: -160, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ ...bounceTransition, delay: delayOffset }}
+          className="pointer-events-auto"
+        >
+          <BrandLogo isDark={isDark} />
+        </motion.div>
         {/* Tombol Tema */}
+      <div className="flex justify-center items-center gap-x-3">
         <motion.div
           initial={{ y: -160, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -357,6 +396,7 @@ const Navbar = ({ wasIntroShown }) => {
         >
           <HamburgerButton isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} isDark={isDark} />
         </motion.div>
+      </div>
 
       </div>
 

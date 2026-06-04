@@ -96,37 +96,6 @@ const ConnectSection = () => {
         </div>
 
         {/* Headline */}
-        <div className="overflow-hidden mb-3">
-          <motion.h2
-            initial={{ y: "110%" }}
-            whileInView={{ y: "0%" }}
-            viewport={{ once: false, amount: 0.5 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[clamp(3rem,10vw,8rem)] font-black uppercase tracking-tight leading-[0.88]"
-            style={{
-              fontFamily: "'Space Grotesk', sans-serif",
-              color: isDark ? "#ffffff" : "#171717",
-            }}
-          >
-            HAVE AN
-          </motion.h2>
-        </div>
-        <div className="overflow-hidden mb-8 md:mb-12">
-          <motion.h2
-            initial={{ y: "110%" }}
-            whileInView={{ y: "0%" }}
-            viewport={{ once: false, amount: 0.5 }}
-            transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[clamp(3rem,10vw,8rem)] font-black uppercase tracking-tight leading-[0.88]"
-            style={{
-              fontFamily: "'Space Grotesk', sans-serif",
-              WebkitTextStroke: isDark ? "1.5px rgba(255,255,255,0.15)" : "1.5px rgba(0,0,0,0.15)",
-              color: "transparent",
-            }}
-          >
-            IDEA?
-          </motion.h2>
-        </div>
 
         {/* Description */}
         <motion.p

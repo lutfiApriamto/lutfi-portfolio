@@ -5,69 +5,7 @@ import { FiGithub } from 'react-icons/fi';
 import BorderGlow from './BorderGlow';
 import { useTheme } from "../../context/ThemeContext";
 import { Link } from 'react-router-dom';
-
-const projectData = [
-  {
-    id: 1,
-    imgurl : '/img/projects/fro-mes.png',
-    title: "FRO MES Feature Redevelopment",
-    category: "Manufacturing System",
-    themeColor: "blue", // Setup Warna Biru
-    year: "2025",
-    tags: ["React.js", "Zustand", "Chakra UI", "TanStack"],
-    summary: "Revamped and migrated essential manufacturing modules to a scalable, highly optimized architecture. Built comprehensive bulk processing systems and real-time visualization tracking.",
-    details: [
-      "Engineered a comprehensive Bulk Processing system (Adjustment & Sample) and Real-time Status Storage tracking.",
-      "Improved application maintainability by refactoring complex legacy logic into modular, reusable components.",
-      "Collaborated within a professional Git workflow with rigorous code reviews and conflict resolution."
-    ]
-  },
-  {
-    id: 2,
-    imgurl : '/img/projects/fro-mes.png', 
-    title: "Trash Management Digitalization System",
-    category: "EcoTech Platform",
-    themeColor: "green", // Setup Warna Hijau
-    year: "2025",
-    tags: ["Vite.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
-    summary: "A full-stack point-based transaction platform designed to digitize waste collection data for local communities, capable of real-time point tracking and automated reporting.",
-    details: [
-      "Engineered a cross-platform full-stack data management system utilizing RESTful API backend to digitize waste exchange transactions.",
-      "Features real-time point tracking and monthly report export capabilities to Excel format.",
-      "Implemented a system used across 10+ branches in Rawa Panjang village to streamline local administration."
-    ]
-  },
-  {
-    id: 3,
-    imgurl : '/img/projects/fro-mes.png', 
-    title: "Fish E-commerce Platform",
-    category: "E-Commerce",
-    themeColor: "blue", // Setup Warna Biru
-    year: "2025",
-    tags: ["MERN Stack", "Vite.js", "Tailwind CSS"],
-    summary: "A robust full-stack marketplace specialized for local ornamental fish businesses, incorporating catalog control, dynamic shopping carts, and smooth checkout integrations.",
-    details: [
-      "Contributed to a 30% increase in sales reach for local UMKM fish businesses.",
-      "Designed a fully responsive user interface to ensure seamless mobile and desktop web experiences.",
-      "Developed an intuitive administrative dashboard to coordinate inventories and transaction pipelines directly."
-    ]
-  },
-  {
-    id: 4,
-    imgurl : '/img/projects/fro-mes.png', 
-    title: "Assistant Assessment Web App",
-    category: "Internal Management Tool",
-    themeColor: "green", // Setup Warna Hijau (Oprek)
-    year: "2025",
-    tags: ["Vite.js", "Node.js", "Express.js", "MongoDB"],
-    summary: "A secure evaluation portal engineered to digitize and centralize the recruitment, scoring, and assessment workflow for candidate laboratory assistants.",
-    details: [
-      "Accelerated the grade recapitulation and data compilation process significantly.",
-      "Protected evaluation records by integrating secure authentication protocols and structured endpoint validation.",
-      "Built with high-performance responsive styling to ease data input across various devices during live assessment rounds."
-    ]
-  }
-];
+import { projectDataHome } from '@/lib/const';
 
 const ProjectCard = ({ project, isDark, onClick }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -220,7 +158,7 @@ const FeaturedProjects = () => {
           // Diubah sedikit dari gap-10 ke gap-y-20 agar teks ke card bawahnya memiliki ruang bernapas yang ideal
           className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-20 md:gap-x-16 md:gap-y-24"
         >
-          {projectData.map((project) => (
+          {projectDataHome.map((project) => (
             <motion.div key={project.id} variants={cardVariants}>
               <ProjectCard
                 project={project}
