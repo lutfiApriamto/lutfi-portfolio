@@ -4,16 +4,13 @@ import { X, ExternalLink, ArrowRight } from 'lucide-react';
 import { FiGithub } from 'react-icons/fi';
 import BorderGlow from './BorderGlow';
 import { useTheme } from "../../context/ThemeContext";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const projectData = [
   {
     id: 1,
-    imgurl : '/img/projects/fro-mes.png',
     title: "FRO MES Feature Redevelopment",
     category: "Manufacturing System",
-    themeColor: "blue", // Setup Warna Biru
-    year: "2025",
     tags: ["React.js", "Zustand", "Chakra UI", "TanStack"],
     summary: "Revamped and migrated essential manufacturing modules to a scalable, highly optimized architecture. Built comprehensive bulk processing systems and real-time visualization tracking.",
     details: [
@@ -24,11 +21,8 @@ const projectData = [
   },
   {
     id: 2,
-    imgurl : '/img/projects/fro-mes.png', 
     title: "Trash Management Digitalization System",
     category: "EcoTech Platform",
-    themeColor: "green", // Setup Warna Hijau
-    year: "2025",
     tags: ["Vite.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
     summary: "A full-stack point-based transaction platform designed to digitize waste collection data for local communities, capable of real-time point tracking and automated reporting.",
     details: [
@@ -39,11 +33,8 @@ const projectData = [
   },
   {
     id: 3,
-    imgurl : '/img/projects/fro-mes.png', 
     title: "Fish E-commerce Platform",
     category: "E-Commerce",
-    themeColor: "blue", // Setup Warna Biru
-    year: "2025",
     tags: ["MERN Stack", "Vite.js", "Tailwind CSS"],
     summary: "A robust full-stack marketplace specialized for local ornamental fish businesses, incorporating catalog control, dynamic shopping carts, and smooth checkout integrations.",
     details: [
@@ -54,11 +45,8 @@ const projectData = [
   },
   {
     id: 4,
-    imgurl : '/img/projects/fro-mes.png', 
     title: "Assistant Assessment Web App",
     category: "Internal Management Tool",
-    themeColor: "green", // Setup Warna Hijau (Oprek)
-    year: "2025",
     tags: ["Vite.js", "Node.js", "Express.js", "MongoDB"],
     summary: "A secure evaluation portal engineered to digitize and centralize the recruitment, scoring, and assessment workflow for candidate laboratory assistants.",
     details: [
@@ -69,68 +57,77 @@ const projectData = [
   }
 ];
 
+// ── PROJECT CARD: BorderGlow + hover overlay digabung dengan benar ──
 const ProjectCard = ({ project, isDark, onClick }) => {
+    const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
-
-  // Menentukan warna background frame box berdasarkan tema & mode gelap/terang
-  const getBgColor = () => {
-    if (project.themeColor === 'green') {
-      return isDark ? "#00ff2f" : "#26fc4d"; // Hijau pekat studio vs Hijau soft pastel
-    }
-    return isDark ? "#45cdff" : "#1c55ff"; // Biru slate gelap vs Biru soft pastel
-  };
 
   return (
     <motion.div
       onClick={onClick}
-      className="cursor-pointer w-full flex flex-col group"
-      whileHover={{ y: -6 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
+      className="cursor-pointer h-full w-full"
+      // FIX: variants tetap ada tapi pointer events tidak terblokir
     >
-      {/* ── INTERFACES CONTAINER BINGKAI (MENGGUNAKAN BORDERGLOW LU) ── */}
+      {/* 
+        FIX 1: BorderGlow harus jadi element terluar yang menerima pointer.
+        Kita pass onPointerEnter/Leave ke sini untuk sync state hover overlay.
+      */}
       <BorderGlow
         edgeSensitivity={38}
         glowColor={isDark ? "75 100 50" : "220 90 50"}
-        backgroundColor={getBgColor()} // Menggunakan background warna bertema dinamis
+        backgroundColor={isDark ? "#0a0a0a" : "#ffffff"}
         borderRadius={28}
         glowRadius={isDark ? 45 : 35}
         glowIntensity={isDark ? 1.8 : 1.3}
         colors={isDark ? ['#C8FF00', '#00F0FF', '#7000FF'] : ['#2563EB', '#38bdf8', '#ec4899']}
         animated={true}
         infiniteGlow={true}
-        className="w-full lg:h-[65vh] h-[35vh]" // Sizing disesuaikan agar proporsi layar pas
+        className="w-full h-[350px] md:h-[450px]"
       >
+        {/*
+          FIX 2: Wrapper di dalam BorderGlow yang handle hover state untuk overlay.
+          Pointer events dari sini akan naik ke BorderGlow dengan benar.
+        */}
         <div
-          className="relative w-full h-full overflow-hidden rounded-[27px] p-6 sm:p-8 md:p-12 flex items-center justify-center"
+          className="relative w-full h-full overflow-hidden rounded-[27px]"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          {/* Inner Image Wrapper (Efek Bezel Layar Gadget) */}
+          {/* Placeholder image */}
           <div
-            className="w-full h-full overflow-hidden rounded-xl shadow-xl border"
+            className="absolute inset-0 flex flex-col items-center justify-center font-mono text-sm tracking-widest uppercase opacity-40 transition-transform duration-700"
             style={{
-              borderColor: isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.05)",
+              backgroundColor: isDark ? "#121212" : "#f1f5f9",
+              transform: isHovered ? "scale(1.08)" : "scale(1)",
+              transition: "transform 0.7s ease",
             }}
           >
-            <img 
-              src={project.imgurl} 
-              alt={project.title}
-              className="w-full h-full object-fill"
-              style={{
-                transform: isHovered ? "scale(1.04)" : "scale(1)",
-                transition: "transform 0.6s ease",
-              }}
-            />
+            <span className="opacity-50 mb-2">[ IMAGE MOCKUP ]</span>
+            <span className="font-bold text-center px-4">{project.title}</span>
           </div>
 
-          {/* Minimal Hover Overlay (Hanya memunculkan tombol View Details secara clean) */}
+          {/* 
+            FIX 3: Overlay sekarang dikontrol lewat React state (isHovered),
+            bukan Tailwind group-hover — lebih reliable karena tidak bergantung
+            pada DOM tree hierarchy untuk class propagation.
+          */}
           <div
-            className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px] rounded-[27px]"
+            className="absolute inset-0 flex flex-col items-center justify-center gap-6 p-8 bg-black/80"
             style={{
               opacity: isHovered ? 1 : 0,
-              transition: "opacity 0.3s ease",
+              transition: "opacity 0.4s ease",
             }}
           >
+            <h3
+              className="text-white text-2xl md:text-3xl font-black text-center"
+              style={{
+                transform: isHovered ? "translateY(0)" : "translateY(24px)",
+                transition: "transform 0.5s ease",
+              }}
+            >
+              {project.title}
+            </h3>
+
             <button
               className="flex items-center gap-2 px-6 py-3 rounded-full font-mono text-xs font-bold uppercase tracking-wider shadow-[0_0_20px_rgba(0,0,0,0.5)]"
               style={{
@@ -146,26 +143,6 @@ const ProjectCard = ({ project, isDark, onClick }) => {
           </div>
         </div>
       </BorderGlow>
-
-      {/* ── METADATA KONTEN DI LUAR BOX (Persis Seperti image_e4b3a8.jpg) ── */}
-      <div className="mt-4 flex justify-between items-start px-1">
-        <div className="space-y-1">
-          <h3 className="text-xl md:text-2xl font-bold tracking-tight">
-            {project.title}
-          </h3>
-          <p className="text-xs font-mono uppercase tracking-widest opacity-50">
-            {project.category}
-          </p>
-        </div>
-
-        {/* Badge Tahun */}
-        <div 
-          className="text-xs font-mono px-3 py-1 border rounded-full opacity-50 whitespace-nowrap"
-          style={{ borderColor: isDark ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.2)" }}
-        >
-          {project.year}
-        </div>
-      </div>
     </motion.div>
   );
 };
@@ -197,7 +174,7 @@ const FeaturedProjects = () => {
       className="relative w-full py-24 px-6 md:px-12 lg:px-24 transition-colors duration-500 overflow-hidden"
       style={{ backgroundColor: isDark ? "#050505" : "#FAF9F6", color: isDark ? "#f0f0f0" : "#171717" }}
     >
-      <div className="max-w-full mx-auto">
+      <div className="max-w-7xl mx-auto">
 
         {/* Header */}
         <motion.div
@@ -217,8 +194,7 @@ const FeaturedProjects = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.15 }}
-          // Diubah sedikit dari gap-10 ke gap-y-20 agar teks ke card bawahnya memiliki ruang bernapas yang ideal
-          className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-20 md:gap-x-16 md:gap-y-24"
+          className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16"
         >
           {projectData.map((project) => (
             <motion.div key={project.id} variants={cardVariants}>
@@ -231,70 +207,76 @@ const FeaturedProjects = () => {
           ))}
         </motion.div>
 
-        {/* Explore More Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.5 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="flex justify-center mt-20 md:mt-28"
-        >
-          <Link
-            to={'/projects'}
-            className="group relative flex items-center gap-3 px-8 py-4 md:px-10 md:py-5 font-mono text-xs md:text-sm font-bold uppercase tracking-[0.2em] overflow-hidden transition-all duration-500"
-            style={{
-              border: `1.5px solid ${isDark ? "rgba(200,255,0,0.4)" : "rgba(37,99,235,0.4)"}`,
-              color: isDark ? "#C8FF00" : "#2563EB",
-              borderRadius: "2px",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = isDark ? "#C8FF00" : "#2563EB";
-              e.currentTarget.style.boxShadow = isDark
-                ? "0 0 24px rgba(200,255,0,0.3), inset 0 0 24px rgba(200,255,0,0.06)"
-                : "0 0 24px rgba(37,99,235,0.25), inset 0 0 24px rgba(37,99,235,0.06)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = isDark ? "rgba(200,255,0,0.4)" : "rgba(37,99,235,0.4)";
-              e.currentTarget.style.boxShadow = "none";
-            }}
-          >
-            <span
-              className="absolute inset-0 -z-10 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] -translate-x-full group-hover:translate-x-0"
-              style={{ backgroundColor: isDark ? "rgba(200,255,0,0.07)" : "rgba(37,99,235,0.06)" }}
-            />
+{/* ── EXPLORE MORE BUTTON ── */}
+<motion.div
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: false, amount: 0.5 }}
+  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+  className="flex justify-center mt-20 md:mt-28"
+>
+  <Link
+    onClick={() => navigate('/projects')}
+    to={'/projects'}
+    className="group relative flex items-center gap-3 px-8 py-4 md:px-10 md:py-5 font-mono text-xs md:text-sm font-bold uppercase tracking-[0.2em] overflow-hidden transition-all duration-500"
+    style={{
+      border: `1.5px solid ${isDark ? "rgba(200,255,0,0.4)" : "rgba(37,99,235,0.4)"}`,
+      color: isDark ? "#C8FF00" : "#2563EB",
+      borderRadius: "2px",
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.borderColor = isDark ? "#C8FF00" : "#2563EB";
+      e.currentTarget.style.boxShadow = isDark
+        ? "0 0 24px rgba(200,255,0,0.3), inset 0 0 24px rgba(200,255,0,0.06)"
+        : "0 0 24px rgba(37,99,235,0.25), inset 0 0 24px rgba(37,99,235,0.06)";
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.borderColor = isDark ? "rgba(200,255,0,0.4)" : "rgba(37,99,235,0.4)";
+      e.currentTarget.style.boxShadow = "none";
+    }}
+  >
+    {/* Sliding background fill on hover */}
+    <span
+      className="absolute inset-0 -z-10 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] -translate-x-full group-hover:translate-x-0"
+      style={{ backgroundColor: isDark ? "rgba(200,255,0,0.07)" : "rgba(37,99,235,0.06)" }}
+    />
 
-            <span className="relative z-10 transition-colors duration-300"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-            >
-              Explore More Projects
-            </span>
+    {/* Teks */}
+    <span className="relative z-10 transition-colors duration-300"
+      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+    >
+      Explore More Projects
+    </span>
 
-            <span className="relative z-10 flex items-center overflow-hidden w-5 h-5">
-              <svg
-                className="absolute transition-all duration-300 ease-out group-hover:translate-x-6 group-hover:opacity-0"
-                width="16" height="16" viewBox="0 0 16 16" fill="none"
-              >
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              <svg
-                className="absolute transition-all duration-300 ease-out -translate-x-6 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"
-                width="16" height="16" viewBox="0 0 16 16" fill="none"
-              >
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </span>
+    {/* Animated arrow */}
+    <span className="relative z-10 flex items-center overflow-hidden w-5 h-5">
+      {/* Arrow yang slide keluar ke kanan lalu masuk dari kiri */}
+      <svg
+        className="absolute transition-all duration-300 ease-out group-hover:translate-x-6 group-hover:opacity-0"
+        width="16" height="16" viewBox="0 0 16 16" fill="none"
+      >
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+      <svg
+        className="absolute transition-all duration-300 ease-out -translate-x-6 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"
+        width="16" height="16" viewBox="0 0 16 16" fill="none"
+      >
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    </span>
 
-            <span className="absolute top-0 left-0 w-2 h-2 border-t border-l transition-all duration-300 group-hover:w-3 group-hover:h-3"
-              style={{ borderColor: isDark ? "#C8FF00" : "#2563EB" }}
-            />
-            <span className="absolute bottom-0 right-0 w-2 h-2 border-b border-r transition-all duration-300 group-hover:w-3 group-hover:h-3"
-              style={{ borderColor: isDark ? "#C8FF00" : "#2563EB" }}
-            />
-          </Link>
-        </motion.div>
+    {/* Corner accents */}
+    <span className="absolute top-0 left-0 w-2 h-2 border-t border-l transition-all duration-300 group-hover:w-3 group-hover:h-3"
+      style={{ borderColor: isDark ? "#C8FF00" : "#2563EB" }}
+    />
+    <span className="absolute bottom-0 right-0 w-2 h-2 border-b border-r transition-all duration-300 group-hover:w-3 group-hover:h-3"
+      style={{ borderColor: isDark ? "#C8FF00" : "#2563EB" }}
+    />
+  </Link>
+</motion.div>
       </div>
 
-      {/* Modal Detail */}
+      {/* Modal */}
       <AnimatePresence>
         {selectedProject && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-black/80 backdrop-blur-md">
@@ -343,19 +325,14 @@ const FeaturedProjects = () => {
                   </div>
                 </div>
 
-                {/* ── GAMBAR DETAIL DI DALAM MODAL ── */}
                 <div
-                  className="w-full h-[30vh] md:h-[45vh] rounded-3xl overflow-hidden border"
+                  className="w-full h-[30vh] md:h-[45vh] rounded-3xl flex items-center justify-center font-mono text-sm uppercase border border-dashed opacity-80"
                   style={{
                     backgroundColor: isDark ? "#0a0a0a" : "#f8fafc",
                     borderColor:     isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)",
                   }}
                 >
-                  <img 
-                    src={selectedProject.imgurl} 
-                    alt={selectedProject.title} 
-                    className="w-full h-full object-cover"
-                  />
+                  [ DETAILED PROJECT IMAGE ]
                 </div>
 
                 <div className="space-y-4">
