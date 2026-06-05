@@ -8,7 +8,7 @@ const menuItems = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Projects", href: "/projects" },
-  { label: "Songs", href: "/songs" },
+  { label: "Let's Talk !", href: "/connect" },
 ];
 
 const socialLinks = [
