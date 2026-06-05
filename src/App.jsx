@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Lenis from 'lenis';
 import ScrollToTop from "./components/layout/ScrollToTop";
+import Connect from "./pages/Connect";
 
 const App = () => {
   const [showIntro, setShowIntro] = useState(false);
@@ -55,6 +56,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home isReady={introComplete} />} />
         <Route path="/about" element={<About/>} />
+        <Route path="/connect" element={<Connect/>} />
+
       </Routes>
 
       {introComplete && <Navbar wasIntroShown={!initialRenderNoIntro} />}

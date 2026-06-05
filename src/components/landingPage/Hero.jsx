@@ -8,7 +8,8 @@ import {
   SiReact, SiNodedotjs, SiMongodb, SiExpress, SiTailwindcss, 
   SiFramer, SiGit, SiTypescript, SiSupabase, SiGitlab, 
   SiChakraui, SiNextdotjs, SiJavascript, SiGo, SiFigma, 
-  SiHtml5, SiCss, SiPhp, SiPython, SiVercel, SiPostman 
+  SiHtml5, SiCss, SiPhp, SiPython, SiVercel, SiPostman, 
+  SiVite
 } from "react-icons/si";
 
 // === SUB-KOMPONEN DEKORASI MENGAMBANG (FLOATING DECORATION) ===
@@ -56,7 +57,7 @@ const Hero = ({ isReady }) => {
   }, []);
 
   // 2. Data Tech Stack (Untuk Marquee Run)
-  const techStack = [
+    const techStack = [
     { name: "React", icon: SiReact, color: "#61DAFB" },
     { name: "Next.js", icon: SiNextdotjs, color: isDark ? "#ffffff" : "#000000" },
     { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
@@ -78,6 +79,7 @@ const Hero = ({ isReady }) => {
     { name: "Vercel", icon: SiVercel, color: isDark ? "#ffffff" : "#000000" },
     { name: "Postman", icon: SiPostman, color: "#FF6C37" },
     { name: "Figma", icon: SiFigma, color: "#F24E1E" },
+    { name: "Vite", icon: SiVite, color: "#9e17ff" },
   ];
 
   const duplicatedTechStack = [...techStack, ...techStack, ...techStack];
