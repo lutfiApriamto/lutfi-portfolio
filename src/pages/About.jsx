@@ -1,4 +1,5 @@
 import AboutCertifications from "@/components/aboutPage/AboutCertifications";
+import AboutCTA from "@/components/aboutPage/AboutCTA";
 import AboutEducation from "@/components/aboutPage/AboutEducation";
 import AboutHero from "@/components/aboutPage/AboutHero";
 import AboutPhilosophy from "@/components/aboutPage/AboutPhilosophy";
@@ -17,6 +18,7 @@ const About = () => {
       <AboutPhilosophy/>
       <ExperienceTimeline />
       <AboutCertifications/>
+      <AboutCTA/>
       <Footer />
     </main>
   );

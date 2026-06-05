@@ -7,9 +7,14 @@ const Footer = () => {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
-  // Fungsi untuk scroll smooth ke atas (Back to Top)
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // Coba pakai Lenis jika tersedia, fallback ke window.scrollTo
+    const lenis = window.__lenis;
+    if (lenis) {
+      lenis.scrollTo(0, { duration: 1.2 });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   // Variasi Animasi Scroll Reveal (Staggered)
@@ -112,15 +117,6 @@ const Footer = () => {
             variants={itemVariants}
             className="flex flex-wrap md:justify-center gap-x-8 gap-y-3 font-mono text-xs uppercase tracking-wider"
           >
-            <a href="#about" className="opacity-60 hover:opacity-100 transition-opacity">
-              About
-            </a>
-            <a href="#projects" className="opacity-60 hover:opacity-100 transition-opacity">
-              Projects
-            </a>
-            <a href="#experience" className="opacity-60 hover:opacity-100 transition-opacity">
-              Experience
-            </a>
             <button
               onClick={scrollToTop}
               className="opacity-60 hover:opacity-100 transition-opacity flex items-center gap-1 text-left"

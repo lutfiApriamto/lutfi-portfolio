@@ -4,6 +4,8 @@ import IntroScreen from "./components/layout/IntroScreen";
 import Navbar from "./components/layout/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Lenis from 'lenis';
+import ScrollToTop from "./components/layout/ScrollToTop";
 
 const App = () => {
   const [showIntro, setShowIntro] = useState(false);
@@ -20,6 +22,27 @@ const App = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 2.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smooth: true,
+    });
+
+    window.__lenis = lenis;
+
+    const raf = (time) => {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    };
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+      window.__lenis = null;
+    };
+  }, []);
+
   const handleIntroComplete = () => {
     sessionStorage.setItem("intro_seen", "true");
     setShowIntro(false);
@@ -28,6 +51,7 @@ const App = () => {
 
   return (
     <>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home isReady={introComplete} />} />
         <Route path="/about" element={<About/>} />

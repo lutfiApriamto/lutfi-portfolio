@@ -147,7 +147,7 @@ const ConnectSection = () => {
 
           {/* Secondary CTA */}
           <button
-            onClick={() => navigate('/connect')}
+            onClick={() => navigate('/about')}
             className="group relative flex items-center gap-3 px-8 py-4 md:px-10 md:py-5 font-mono text-xs md:text-sm font-bold uppercase tracking-[0.2em] overflow-hidden transition-all duration-500 border rounded-sm"
             style={{
               borderColor: isDark ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.2)",
