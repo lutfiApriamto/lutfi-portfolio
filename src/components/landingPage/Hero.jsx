@@ -9,7 +9,7 @@ import {
   SiFramer, SiGit, SiTypescript, SiSupabase, SiGitlab, 
   SiChakraui, SiNextdotjs, SiJavascript, SiGo, SiFigma, 
   SiHtml5, SiCss, SiPhp, SiPython, SiVercel, SiPostman, 
-  SiVite
+  SiVite, SiPostgresql, SiMysql, SiBootstrap
 } from "react-icons/si";
 
 // === SUB-KOMPONEN DEKORASI MENGAMBANG (FLOATING DECORATION) ===
@@ -80,6 +80,9 @@ const Hero = ({ isReady }) => {
     { name: "Postman", icon: SiPostman, color: "#FF6C37" },
     { name: "Figma", icon: SiFigma, color: "#F24E1E" },
     { name: "Vite", icon: SiVite, color: "#9e17ff" },
+    { name: "PostgreSQL", icon: SiPostgresql, color: "#336791" },
+    { name: "MySQL", icon: SiMysql, color: "#4479A1" },
+    { name: "Bootstrap", icon: SiBootstrap, color: "#7952B3" },
   ];
 
   const duplicatedTechStack = [...techStack, ...techStack, ...techStack];
