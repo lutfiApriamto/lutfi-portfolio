@@ -377,7 +377,7 @@ const SkillMatchCalculator = () => {
             className="max-w-lg text-sm md:text-base leading-relaxed"
             style={{ fontFamily: "'Inter', sans-serif", color: isDark ? "#94a3b8" : "#525252" }}
           >
-            Select the tech stack your project needs. I'll tell you how well my skills match your requirements — in real time.
+            Select the tech stack your project needs. I'll tell you how well my skills match your requirements in real time.
           </p>
         </motion.div>
 
@@ -403,9 +403,9 @@ const SkillMatchCalculator = () => {
               </span>
               <div className="flex flex-wrap gap-3">
                 {[
-                  { key: "frontend",  label: "Frontend Dev",     emoji: "🎨" },
-                  { key: "backend",   label: "Backend Dev",      emoji: "⚙️" },
-                  { key: "fullstack", label: "Full Stack MERN",  emoji: "🚀" },
+                  { key: "frontend",  label: "Frontend Dev",    },
+                  { key: "backend",   label: "Backend Dev",     },
+                  { key: "fullstack", label: "Full Stack MERN", },
                 ].map((preset) => (
                   <button
                     key={preset.key}
@@ -424,7 +424,6 @@ const SkillMatchCalculator = () => {
                         : isDark ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.45)",
                     }}
                   >
-                    <span>{preset.emoji}</span>
                     {preset.label}
                   </button>
                 ))}

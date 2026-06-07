@@ -1,55 +1,12 @@
 import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useInView, useAnimation, AnimatePresence } from 'framer-motion';
 import { useTheme } from "../../context/ThemeContext";
+import { traits } from '@/lib/const';
+import { GlitchText } from '../reusable/NeonText';
 
-// ── DATA ──
-const traits = [
-  {
-    id: 1,
-    keyword: "Adaptive",
-    emoji: "⚡",
-    description: "Quickly adjusting to new tech stacks, team dynamics, and project requirements without losing momentum.",
-    level: 92,
-  },
-  {
-    id: 2,
-    keyword: "Collaborative",
-    emoji: "🤝",
-    description: "Thriving in team environments — from pair programming to cross-functional syncs with designers and PMs.",
-    level: 88,
-  },
-  {
-    id: 3,
-    keyword: "Critical Thinker",
-    emoji: "🧠",
-    description: "Breaking down complex problems into manageable parts and finding elegant, scalable solutions.",
-    level: 90,
-  },
-  {
-    id: 4,
-    keyword: "Problem Solver",
-    emoji: "🔧",
-    description: "Turning ambiguous bugs and undefined requirements into clear, actionable development tasks.",
-    level: 94,
-  },
-  {
-    id: 5,
-    keyword: "Committed",
-    emoji: "🎯",
-    description: "Seeing every project through — delivering on time, maintaining quality, and owning outcomes.",
-    level: 96,
-  },
-  {
-    id: 6,
-    keyword: "Communicator",
-    emoji: "💬",
-    description: "Translating technical complexity into clear language for both developers and non-technical stakeholders.",
-    level: 85,
-  },
-];
 
 // ── FLOATING KEYWORD TAG ──
-const FloatingTag = ({ keyword, emoji, index, isDark, isInView }) => {
+const FloatingTag = ({ keyword, index, isDark, isInView }) => {
   const positions = [
     { top: '8%',  left: '5%'  },
     { top: '5%',  right: '8%' },
@@ -74,7 +31,6 @@ const FloatingTag = ({ keyword, emoji, index, isDark, isInView }) => {
         animationDelay: `${index * 0.5}s`,
       }}
     >
-      <span className="text-sm">{emoji}</span>
       <span
         className="text-[10px] font-bold uppercase tracking-[0.15em]"
         style={{
@@ -224,6 +180,15 @@ const AboutSoftSkills = () => {
           0%, 100% { transform: translateY(0px); }
           50%       { transform: translateY(-10px); }
         }
+
+        @keyframes neonFlicker {
+          0%, 100% { opacity: 1; }
+          92%       { opacity: 1; }
+          93%       { opacity: 0.4; }
+          94%       { opacity: 1; }
+          96%       { opacity: 0.6; }
+          97%       { opacity: 1; }
+        }
       `}</style>
 
       {/* ── BACKGROUND PARALLAX TEXT ── */}
@@ -248,7 +213,6 @@ const AboutSoftSkills = () => {
         <FloatingTag
           key={t.id}
           keyword={t.keyword}
-          emoji={t.emoji}
           index={i}
           isDark={isDark}
           isInView={isHeaderInView}
@@ -297,7 +261,7 @@ const AboutSoftSkills = () => {
               color: "transparent",
             }}
           >
-            SIDE OF ME
+           <GlitchText text="SIDE OF ME" isDark={isDark} />
           </motion.h2>
         </div>
 
@@ -309,7 +273,7 @@ const AboutSoftSkills = () => {
           className="max-w-lg text-sm md:text-base leading-relaxed"
           style={{ fontFamily: "'Inter', sans-serif", color: isDark ? "#94a3b8" : "#525252" }}
         >
-          Great software isn't just about code — it's about the person behind it. These are the traits that shape how I work, collaborate, and grow.
+          Great software isn't just about code, it's about the person behind it. These are the traits that shape how I work, collaborate, and grow.
         </motion.p>
       </motion.div>
 

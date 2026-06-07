@@ -1,60 +1,9 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { useTheme } from "../../context/ThemeContext";
+import { stats } from '@/lib/const';
+import { NeonText } from '../reusable/NeonText';
 
-// ── DATA ──
-const stats = [
-  {
-    id: 1,
-    number: 2,
-    suffix: "+",
-    label: "Years Building",
-    sublabel: "Since 2024",
-    description: "Started with curiosity, stayed for the craft.",
-  },
-  {
-    id: 2,
-    number: 10,
-    suffix: "+",
-    label: "Projects Shipped",
-    sublabel: "End-to-end",
-    description: "From idea to deployment, fully owned.",
-  },
-  {
-    id: 3,
-    number: 10,
-    suffix: "+",
-    label: "Tech Mastered",
-    sublabel: "& Still Growing",
-    description: "MERN, Next.js, Go, PHP, and beyond.",
-  },
-  {
-    id: 4,
-    number: 2,
-    suffix: "×",
-    label: "IP Rights Acquired",
-    sublabel: "DIKTI SAINTEK",
-    description: "Recognized work with official IP registration.",
-  },
-  {
-    id: 5,
-    number: 3,
-    suffix: "",
-    label: "Classes Instructed",
-    sublabel: "60–90 Students Each",
-    description: "Mentored Java, Go, and PHP at LEPKOM.",
-  },
-  {
-    id: 6,
-    number: 371,
-    suffix: "",
-    prefix: "",
-    label: "GPA Score",
-    sublabel: "out of 4.00",
-    description: "Graduated from Gunadarma with distinction.",
-    isGPA: true,
-  },
-];
 
 // ── ANIMATED COUNTER ──
 const useCounter = (target, isInView, duration = 1800, isGPA = false) => {
@@ -317,13 +266,8 @@ const AboutStats = () => {
             animate={isHeaderInView ? { y: "0%" } : { y: "110%" }}
             transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="text-[clamp(2.5rem,8vw,6rem)] font-black uppercase tracking-tight leading-[0.88]"
-            style={{
-              fontFamily: "'Space Grotesk', sans-serif",
-              WebkitTextStroke: isDark ? "1.5px rgba(255,255,255,0.15)" : "1.5px rgba(0,0,0,0.15)",
-              color: "transparent",
-            }}
           >
-            DEFINE ME
+            <NeonText text="define me" />
           </motion.h2>
         </div>
 
@@ -335,7 +279,7 @@ const AboutStats = () => {
           className="max-w-lg text-sm md:text-base leading-relaxed"
           style={{ fontFamily: "'Inter', sans-serif", color: isDark ? "#94a3b8" : "#525252" }}
         >
-          Numbers don't tell the whole story — but they're a honest starting point.
+          Numbers don't tell the whole story, but they're a honest starting point.
         </motion.p>
       </motion.div>
 

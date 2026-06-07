@@ -219,7 +219,7 @@ const AboutPhilosophy = () => {
             color: isDark ? "#94a3b8" : "#525252",
           }}
         >
-          Every great product starts with a clear process. Here's how I approach building — from the first idea to the final deployment.
+          Every great product starts with a clear process. Here's how I approach building  from the first idea to the final deployment.
         </motion.p>
       </div>
 

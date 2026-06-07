@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useInView, useAnimation } from 'framer-motion';
 import { useTheme } from "../../context/ThemeContext";
 import { ArrowDown } from 'lucide-react';
+import { GlitchText } from '../reusable/NeonText';
 
 // ── CONTACT METHODS ──
 const contacts = [
@@ -30,44 +31,6 @@ const contacts = [
     short: "Follow",
   },
 ];
-
-// ── ANIMATED CURSOR FOLLOWER ──
-const CursorFollower = ({ isDark }) => {
-  const [pos, setPos] = useState({ x: -100, y: -100 });
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const move = (e) => {
-      setPos({ x: e.clientX, y: e.clientY });
-      setVisible(true);
-    };
-    const leave = () => setVisible(false);
-    window.addEventListener('mousemove', move);
-    window.addEventListener('mouseleave', leave);
-    return () => {
-      window.removeEventListener('mousemove', move);
-      window.removeEventListener('mouseleave', leave);
-    };
-  }, []);
-
-  return (
-    <motion.div
-      className="fixed top-0 left-0 pointer-events-none z-50 rounded-full"
-      animate={{
-        x: pos.x - 4,
-        y: pos.y - 4,
-        opacity: visible ? 1 : 0,
-        scale: visible ? 1 : 0,
-      }}
-      transition={{ type: "spring", damping: 30, stiffness: 400, mass: 0.3 }}
-      style={{
-        width: 8,
-        height: 8,
-        backgroundColor: isDark ? "#C8FF00" : "#2563EB",
-      }}
-    />
-  );
-};
 
 // ── MAIN COMPONENT ──
 const ConnectHero = () => {
@@ -106,7 +69,6 @@ const ConnectHero = () => {
 
   return (
     <>
-      <CursorFollower isDark={isDark} />
 
       <section
         ref={sectionRef}
@@ -265,13 +227,8 @@ const ConnectHero = () => {
               >
                 <span
                   className="text-[clamp(3rem,9vw,8rem)] font-black uppercase tracking-tight leading-[0.88]"
-                  style={{
-                    fontFamily: "'Space Grotesk', sans-serif",
-                    WebkitTextStroke: isDark ? "1.5px rgba(255,255,255,0.18)" : "1.5px rgba(0,0,0,0.18)",
-                    color: "transparent",
-                  }}
                 >
-                  LUTFI.
+                <GlitchText text="LUTFI" isDark={isDark} />
                 </span>
               </motion.div>
             </div>
@@ -288,7 +245,7 @@ const ConnectHero = () => {
               className="max-w-sm text-sm md:text-base leading-relaxed"
               style={{ fontFamily: "'Inter', sans-serif", color: isDark ? "#94a3b8" : "#525252" }}
             >
-              Whether it's a project, a collab, or just a conversation — I'm reachable. Pick your channel below and let's start something.
+              Whether it's a project, a collab, or just a conversation I'm reachable. Pick your channel below and let's start something.
             </motion.p>
 
             {/* Contact list */}

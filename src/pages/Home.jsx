@@ -1,9 +1,10 @@
-import FeaturedProjects from "@/components/landingPage/FeaturedProjects";
+import TechStackScroll from "@/components/landingPage/Techstackscroll";
 import AboutPreview from "../components/landingPage/AboutPreview";
 import ExperienceTimeline from "../components/landingPage/ExperienceTimeline";
 import Hero from "../components/landingPage/Hero";
 import ConnectSection from "@/components/landingPage/Connectsection";
 import Footer from "@/components/layout/Footer";
+import ProjectsHorizontalScroll from "@/components/projectPage/ProjectsHorizontalScroll";
 
 
 const Home = ({ isReady }) => {
@@ -12,7 +13,8 @@ const Home = ({ isReady }) => {
       <Hero isReady={isReady} />
       <AboutPreview/>
       <ExperienceTimeline/>
-      <FeaturedProjects/>
+      <TechStackScroll/>
+      <ProjectsHorizontalScroll/>
       <ConnectSection/>
       <Footer/>
     </main>

@@ -109,7 +109,7 @@ const ConnectSection = () => {
             color: isDark ? "#94a3b8" : "#525252",
           }}
         >
-          Whether you have a project in mind, want to collaborate, or just want to say hello — I'm always open to new opportunities and conversations.
+          Whether you have a project in mind, want to collaborate, or just want to say hello, I'm always open to new opportunities and conversations.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -166,7 +166,6 @@ const ConnectSection = () => {
             }}
           >
             Say Hello
-            <span className="text-base leading-none group-hover:translate-x-0.5 transition-transform duration-200">👋</span>
           </button>
         </motion.div>
 

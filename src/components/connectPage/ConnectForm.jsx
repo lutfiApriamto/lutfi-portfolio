@@ -4,6 +4,7 @@ import { useTheme } from "../../context/ThemeContext";
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 import { Send, User, Mail, FileText, MessageSquare } from 'lucide-react';
+import { NeonText } from '../reusable/NeonText';
 
 // ── TOAST CONFIG ──
 export const toasterConfig = {
@@ -344,7 +345,7 @@ const ConnectForm = () => {
                   color: "transparent",
                 }}
               >
-                LINE.
+                <NeonText text="LINE." />
               </motion.h2>
             </div>
 

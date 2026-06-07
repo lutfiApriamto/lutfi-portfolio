@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { useTheme } from "../../context/ThemeContext";
+import {NeonText} from '../reusable/NeonText';
 
 const AboutCTA = () => {
   const { theme } = useTheme();
@@ -115,7 +116,7 @@ const AboutCTA = () => {
                 color: "transparent",
               }}
             >
-              I CAN DO.
+              <NeonText text="I CAN DO." />
             </motion.h2>
           </div>
           <div className="overflow-hidden">
@@ -141,7 +142,7 @@ const AboutCTA = () => {
             className="max-w-xs text-sm leading-relaxed"
             style={{ fontFamily: "'Inter', sans-serif", color: isDark ? "#94a3b8" : "#525252" }}
           >
-            If you've made it this far — you already know enough. The next move is yours.
+            If you've made it this far you already know enough. The next move is yours.
           </motion.p>
 
           <motion.div

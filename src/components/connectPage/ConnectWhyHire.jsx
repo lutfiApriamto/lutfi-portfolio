@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { useTheme } from "../../context/ThemeContext";
 import { Code2, Zap, Users, RefreshCw, PackageCheck, Lightbulb } from 'lucide-react';
+import {NeonText} from '../reusable/NeonText';
 
 // ── DATA ──
 const reasons = [
@@ -9,8 +10,8 @@ const reasons = [
     id: 1,
     num: '01',
     icon: Code2,
-    title: "I Ship, Not Just Code",
-    body: "I don't just write code — I deliver working products. From architecture to deployment, I own the full cycle and make sure things actually land.",
+    title: "I Shipped, Not Just Code",
+    body: "I don't just write code, I deliver working products. From architecture to deployment, I own the full cycle and make sure things actually land.",
     tag: "Ownership",
   },
   {
@@ -34,7 +35,7 @@ const reasons = [
     num: '04',
     icon: RefreshCw,
     title: "Clean Code is Non-Negotiable",
-    body: "Readable, modular, maintainable — not just for me, but for whoever touches the codebase next. I write code like I'll be reading it 6 months later.",
+    body: "Readable, modular, maintainable, not just for me, but for whoever touches the codebase next. I write code like I'll be reading it 6 months later.",
     tag: "Code Quality",
   },
   {
@@ -42,7 +43,7 @@ const reasons = [
     num: '05',
     icon: PackageCheck,
     title: "Proven Track Record",
-    body: "8+ shipped projects, 2 registered IP rights, and real-world production experience at ParagonCorp. Not portfolio projects — actual systems in use.",
+    body: "8+ shipped projects, 2 registered IP rights, and real-world production experience at ParagonCorp. Not portfolio projects actual systems in use.",
     tag: "Experience",
   },
   {
@@ -50,7 +51,7 @@ const reasons = [
     num: '06',
     icon: Lightbulb,
     title: "I Think Before I Build",
-    body: "Every feature starts with a question: does this actually solve the problem? I bring product thinking to engineering — not just execution.",
+    body: "Every feature starts with a question: does this actually solve the problem? I bring product thinking to engineering not just execution.",
     tag: "Thinking",
   },
 ];
@@ -279,7 +280,8 @@ const ConnectWhyHire = () => {
                   color: "transparent",
                 }}
               >
-                SHOULD HIRE
+                <NeonText text="SHOULD HIRE" />
+                
               </motion.h2>
             </div>
             <div className="overflow-hidden">
@@ -303,7 +305,7 @@ const ConnectWhyHire = () => {
             className="max-w-md text-sm md:text-base leading-relaxed"
             style={{ fontFamily: "'Inter', sans-serif", color: isDark ? "#94a3b8" : "#525252" }}
           >
-            Not because I'm perfect — but because I bring more than just syntax. Here's what you're actually getting.
+            Not because I'm perfect, but because I bring more than just syntax. Here's what you're actually getting.
           </motion.p>
         </motion.div>
 
@@ -336,7 +338,7 @@ const ConnectWhyHire = () => {
             className="text-xs md:text-sm leading-relaxed max-w-sm"
             style={{ fontFamily: "'Inter', sans-serif", color: isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.3)" }}
           >
-            Still not convinced? That's fair. Let's just talk — no commitment, no pressure.
+            Still not convinced? That's fair. Let's just talk, no commitment, no pressure.
           </p>
 
           <a

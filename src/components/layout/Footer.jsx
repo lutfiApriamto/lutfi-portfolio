@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Mail, ArrowUpRight, MapPin } from "lucide-react";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 import { useTheme } from "../../context/ThemeContext";
+import { GlitchText } from "../reusable/NeonText";
 
 const Footer = () => {
   const { theme } = useTheme();
@@ -61,9 +62,7 @@ const Footer = () => {
             </span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-none">
               Let's Build Something{" "}
-              <span style={{ color: isDark ? "#C8FF00" : "#2563EB" }}>
-                Extraordinary
-              </span>
+              <GlitchText text="Extraordinary" isDark={isDark} />
             </h2>
           </motion.div>
 
