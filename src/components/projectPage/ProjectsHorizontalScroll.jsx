@@ -20,8 +20,8 @@ const DesktopCard = ({ project, index, isDark, onClick }) => {
       onKeyDown={(e) => { if (e.key === 'Enter') onClick(); }}
       className="group relative flex-shrink-0 overflow-hidden cursor-pointer"
       style={{
-        width: "clamp(320px, 38vw, 520px)",
-        height: "clamp(380px, 60vh, 620px)",
+        width: "clamp(500px, 50vw, 800px)",
+        height: "clamp(420px, 65vh, 680px)",
         borderRadius: "4px",
         border: `1px solid ${isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)"}`,
         WebkitTapHighlightColor: 'transparent',
@@ -156,8 +156,8 @@ const MobileCard = ({ project, index, isDark, onClick }) => (
     data-project-index={index}
     className="group relative flex-shrink-0 snap-center overflow-hidden cursor-pointer active:scale-[0.98] transition-transform"
     style={{
-      width: "80vw",
-      aspectRatio: "3/4",
+      width: "92vw",
+      height: "50vh",
       borderRadius: "8px",
       border: `1px solid ${isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.08)"}`,
       backgroundColor: isDark ? "#0a0a0a" : "#f1f5f9",
