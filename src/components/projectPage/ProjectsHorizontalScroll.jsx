@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useTheme } from "../../context/ThemeContext";
 import { ArrowUpRight } from 'lucide-react';
 import { projectDataHome } from '@/lib/const';
-import ProjectModalWrapper from './ProjectModal';
+import ProjectModalWrapper from './Projectmodal';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { GlitchText } from '../reusable/NeonText';

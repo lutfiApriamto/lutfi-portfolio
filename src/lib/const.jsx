@@ -28,7 +28,7 @@ export const projectDataHome = [
   },
   {
     id: 2,
-    thumbnail: '/img/projects/fish-ecommerce.png',
+    thumbnail: '/img/projects/ikan-thumbnail.png',
     heroImage: '/img/projects/fish-ecommerce.png',
     title: "Fish E-commerce Platform",
     category: "Full Stack",
