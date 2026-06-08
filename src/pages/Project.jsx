@@ -1,6 +1,6 @@
 
 import Footer from "@/components/layout/Footer";
-import ProjectsCTA from "@/components/projectPage/Projectscta";
+import ProjectsCTA from "@/components/projectPage/ProjectsCTA";
 import ProjectsFeatured from "@/components/projectPage/ProjectsFeatured";
 import ProjectsHero from "@/components/projectPage/ProjectsHero";
 import ProjectsHorizontalScroll from "@/components/projectPage/ProjectsHorizontalScroll";
