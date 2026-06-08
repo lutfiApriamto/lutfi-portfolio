@@ -170,6 +170,18 @@
 
 /* ══════════════════════════════════════════ */
 
+.project-card img {
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 1s ease,
+              filter 1s ease;
+}
+
+.project-card:hover img {
+  opacity: 1 !important;
+  filter: grayscale(0%) !important;
+  transform: scale(1.05);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

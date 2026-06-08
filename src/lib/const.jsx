@@ -1,7 +1,34 @@
 export const projectDataHome = [
   {
     id: 1,
-    thumbnail: '/img/projects/fro-mes.png',
+    thumbnail: '/img/projects/sales-thumbnail.png',
+    heroImage: '/img/projects/sales-thumbnail.png',
+    title: "SalesGen.ai",
+    category: "Full Stack",
+    year: "2025",
+    tags: ["React.js", "Laravel", "Vite.js", "Gemini AI", "Supabase", "Docker"],
+    summary: "An AI-powered fullstack web application that automatically generates professional sales pages and landing pages using Google Gemini AI, complete with authentication, credit system, live preview, and HTML export.",
+    viewDemo: true,
+    demoURL: 'https://sales-page-front-end.vercel.app/',
+    viewRepo: true,
+    urlRepo: 'https://github.com/lutfiApriamto/sales-page-frontend',
+    keyFeatures: [
+      "Integrated Google Gemini AI to generate persuasive sales page copywriting automatically from raw product information input.",
+      "Built a complete authentication system using Laravel Sanctum — Register, Login, Logout, Forgot Password, and Reset Password with custom HTML email templates.",
+      "Implemented a Live Preview system that renders the generated HTML sales page directly in the browser with Desktop and Mobile viewport modes.",
+      "Developed a Credit System where each account receives 35 generation credits, preventing API abuse and managing usage limits automatically.",
+      "Built HTML Export functionality allowing users to download their generated sales page as a ready-to-host `.html` file."
+    ],
+    outComeImpact: [
+      "Successfully deployed fullstack application — frontend on Vercel and backend via Docker on Render — demonstrating end-to-end production deployment capability.",
+      "Eliminated the need for manual copywriting by automating the entire sales page generation process, reducing creation time from hours to seconds.",
+      "Established a scalable multi-feature dashboard with history management, allowing users to revisit, preview, and regenerate previous sales pages.",
+      "Demonstrated cross-stack proficiency by combining React 19 + Vite on the frontend with Laravel 12 + PostgreSQL (Supabase) on the backend in a single cohesive product."
+    ]
+  },
+  {
+    id: 2,
+    thumbnail: '/img/projects/fro-thumbnail.png',
     heroImage: '/img/projects/fro-mes.png',
     title: "FRO MES Feature Redevelopment",
     category: "Front-End",
@@ -27,16 +54,16 @@ export const projectDataHome = [
     ]
   },
   {
-    id: 2,
+    id: 3,
     thumbnail: '/img/projects/ikan-thumbnail.png',
-    heroImage: '/img/projects/fish-ecommerce.png',
+    heroImage: '/img/projects/ikan-thumbnail2.png',
     title: "Fish E-commerce Platform",
     category: "Full Stack",
     year: "2025",
     tags: ["Vite.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
     summary: "A comprehensive full-stack e-commerce solution designed for local ornamental fish businesses, featuring catalog management, shopping cart, and direct transaction management.",
-    viewDemo: false,
-    demoURL: 'https://github.com/lutfiApriamto',
+    viewDemo: true,
+    demoURL: 'https://e-commerce-ikan-hias-fe.vercel.app/',
     viewRepo: false,
     urlRepo: 'https://github.com/lutfiApriamto',
     keyFeatures: [
@@ -54,16 +81,16 @@ export const projectDataHome = [
     ]
   },
   {
-    id: 3,
-    thumbnail: '/img/projects/bank-sampah.png',
-    heroImage: '/img/projects/bank-sampah.png',
+    id: 4,
+    thumbnail: '/img/projects/bank-sampah-thumbnail.png',
+    heroImage: '/img/projects/bank-sampah-thumbnail.png',
     title: "Trash Management Digitalization System",
     category: "Full Stack",
     year: "2025",
     tags: ["Vite.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
     summary: "A cross-platform full-stack data management system for Rawa Panjang Village waste bank program, digitalizing point-based waste exchange transactions with real-time tracking.",
-    viewDemo: false,
-    demoURL: 'https://github.com/lutfiApriamto',
+    viewDemo: true,
+    demoURL: 'https://bank-sampah-dosen-project-fe.vercel.app/',
     viewRepo: false,
     urlRepo: 'https://github.com/lutfiApriamto',
     keyFeatures: [
@@ -81,16 +108,16 @@ export const projectDataHome = [
     ]
   },
   {
-    id: 4,
-    thumbnail: '/img/projects/assessment-app.png',
-    heroImage: '/img/projects/assessment-app.png',
+    id: 5,
+    thumbnail: '/img/projects/lepkom-thumbnail.png',
+    heroImage: '/img/projects/lepkom-thumbnail.png',
     title: "Assistant Assessment Web App",
     category: "Full Stack",
     year: "2025",
     tags: ["Vite.js", "Node.js", "Express.js", "MongoDB"],
     summary: "A secure full-stack data management system to digitize and centralize the scoring and assessment workflow for new laboratory assistant candidates.",
-    viewDemo: false,
-    demoURL: 'https://github.com/lutfiApriamto',
+    viewDemo: true,
+    demoURL: 'https://oprek-lepkom.vercel.app/',
     viewRepo: false,
     urlRepo: 'https://github.com/lutfiApriamto',
     keyFeatures: [
@@ -108,9 +135,9 @@ export const projectDataHome = [
     ]
   },
   {
-    id: 5,
-    thumbnail: '/img/projects/gas-peduli-gizi.png',
-    heroImage: '/img/projects/gas-peduli-gizi.png',
+    id: 6,
+    thumbnail: '/img/projects/gas-thumbnail.png',
+    heroImage: '/img/projects/gas-thumbnail.png',
     title: "GAS Peduli Gizi",
     category: "Full Stack",
     year: "2025",
@@ -134,7 +161,7 @@ export const projectDataHome = [
     ]
   },
   {
-    id: 6,
+    id: 7,
     thumbnail: '/img/projects/lutfiscript.png',
     heroImage: '/img/projects/lutfiscript.png',
     title: "LutfiScript",
@@ -142,10 +169,10 @@ export const projectDataHome = [
     year: "2024",
     tags: ["Vite.js", "Node.js", "Express.js", "MongoDB", "MongoDB Atlas"],
     summary: "A comprehensive full-stack e-learning platform for JavaScript education, with separate Admin and User portals, video modules, authentication, and interactive quizzes.",
-    viewDemo: false,
-    demoURL: 'https://github.com/lutfiApriamto',
-    viewRepo: false,
-    urlRepo: 'https://github.com/lutfiApriamto',
+    viewDemo: true,
+    demoURL: 'https://lutfi-script-client.vercel.app/',
+    viewRepo: true,
+    urlRepo: 'https://github.com/lutfiApriamto/LutfiScript-client',
     keyFeatures: [
       "Built dual-portal architecture with separate Admin and User interfaces — admins manage content while users consume learning materials.",
       "Implemented a full authentication system including email-based password reset, session management, and protected route handling.",
@@ -159,7 +186,7 @@ export const projectDataHome = [
       "Provided a structured JavaScript learning path for users, from fundamentals to practical exercises, all within one platform.",
       "Demonstrated practical application of MERN stack (Vite.js variant) in a real-world, multi-role application context."
     ]
-  }
+  },
 ];
 
 export const certifData = [

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+
+  <!-- BG -->
+  <rect x="0" y="0" width="200" height="200" rx="36" fill="#050505"/>
+
+  <!-- Corner bracket top-right -->
+  <rect x="140" y="16" width="44" height="6" rx="3" fill="#C8FF00"/>
+  <rect x="178" y="16" width="6" height="44" rx="3" fill="#C8FF00"/>
+
+  <!-- Corner bracket bottom-left -->
+  <rect x="16" y="178" width="44" height="6" rx="3" fill="#C8FF00"/>
+  <rect x="16" y="140" width="6" height="44" rx="3" fill="#C8FF00"/>
+
+  <!-- L — vertical bar -->
+  <rect x="52" y="60" width="22" height="100" rx="4" fill="#ffffff"/>
+  <!-- L — horizontal bar -->
+  <rect x="52" y="138" width="62" height="22" rx="4" fill="#ffffff"/>
+
+  <!-- A — left leg -->
+  <polygon points="114,60 136,60 148,160 126,160" fill="#C8FF00"/>
+  <!-- A — right leg (ghost) -->
+  <polygon points="136,60 158,60 170,160 148,160" fill="#C8FF00" opacity="0.5"/>
+  <!-- A — crossbar -->
+  <rect x="120" y="118" width="38" height="14" rx="3" fill="#C8FF00"/>
+
+</svg>

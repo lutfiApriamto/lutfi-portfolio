@@ -18,7 +18,7 @@ const DesktopCard = ({ project, index, isDark, onClick }) => {
       role="button"
       tabIndex={0}
       onKeyDown={(e) => { if (e.key === 'Enter') onClick(); }}
-      className="group relative flex-shrink-0 overflow-hidden cursor-pointer"
+      className="project-card group relative flex-shrink-0 overflow-hidden cursor-pointer"
       style={{
         width: "clamp(500px, 50vw, 800px)",
         height: "clamp(420px, 65vh, 680px)",
@@ -41,15 +41,6 @@ const DesktopCard = ({ project, index, isDark, onClick }) => {
           style={{
             opacity: isDark ? 0.8 : 0.9,
             filter: "grayscale(30%)",
-            transition: "transform 1s ease, opacity 0.5s ease, filter 0.5s ease",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.opacity = "1";
-            e.currentTarget.style.filter = "grayscale(0%)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.opacity = isDark ? "0.8" : "0.9";
-            e.currentTarget.style.filter = "grayscale(30%)";
           }}
         />
       </div>
@@ -400,7 +391,7 @@ const ProjectsHorizontalScroll = () => {
                 color: "transparent",
               }}
             >
-              Explore.
+              <GlitchText text="Explore." isDark={isDark} />
             </h2>
             <p
               className="mt-3 text-sm leading-relaxed max-w-sm"
@@ -532,7 +523,7 @@ const ProjectsHorizontalScroll = () => {
               >
                 Scroll<br />
                 <span >
-                  <GlitchText text="to Explore" isDark={isDark} />
+                  <GlitchText text="to Explore." isDark={isDark} />
                 </span>
               </h2>
               <p
