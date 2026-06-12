@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from "../../context/ThemeContext";
 import { ExternalLink, X, Lock } from 'lucide-react';
 import { FiGithub } from 'react-icons/fi';
+import {NeonText} from '../reusable/NeonText';
+
 
 // ── TOOLTIP WRAPPER ──
 const DisabledTooltip = ({ children, isDark }) => (
@@ -160,17 +162,13 @@ const ProjectModal = ({ project, onClose }) => {
               className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-[0.9] mb-4"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
-              {project.title.split(' ').map((word, i, arr) => (
-                <span
-                  key={i}
-                  style={i === arr.length - 1 ? {
-                    WebkitTextStroke: isDark ? "1.5px rgba(255,255,255,0.3)" : "1.5px rgba(0,0,0,0.3)",
-                    color: "transparent",
-                  } : {}}
-                >
-                  {word}{i !== arr.length - 1 ? ' ' : ''}
-                </span>
-              ))}
+              {project.title.split(' ').map((word, i, arr) => 
+                i === arr.length - 1 ? (
+                  <NeonText key={i} text={word} />
+                ) : (
+                  <span key={i}>{word} </span>
+                )
+              )}
             </h2>
             <p
               className="text-sm md:text-base leading-relaxed max-w-2xl"
