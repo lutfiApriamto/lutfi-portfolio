@@ -1,4 +1,33 @@
 export const projectDataHome = [
+    {
+    id: 0,
+    thumbnail: '/img/projects/jomock-thumbnail.jpeg',
+    heroImage: '/img/projects/jomock-thumbnail2.jpeg',
+    title: "JO-MOCK",
+    category: "Full Stack",
+    year: "2026",
+    tags: ["React 19", "Vite 8", "Node.js", "Express 5", "MongoDB", "Tailwind CSS", "TanStack Query", "Zustand"],
+    summary: "A contract-first API mocking platform that lets frontend and backend teams collaborate on API contracts, generate instant mock servers, and manage changes through a structured review workflow — all from the browser.",
+    viewDemo: true,
+    demoURL: 'https://jo-mock.vercel.app/',
+    viewRepo: true,
+    urlRepo: 'https://github.com/lutfiApriamto/jo-mock',
+    keyFeatures: [
+      "Designed a contract-first workflow where teams define API endpoints, request schemas, and multiple response scenarios before writing any backend code.",
+      "Built a real-time mock server that serves JSON responses based on defined contracts — each project gets a unique slug-based URL ready for immediate frontend consumption.",
+      "Implemented per-user response toggles allowing each developer to independently switch which response scenario an endpoint returns, without affecting other team members.",
+      "Developed a Change Request system with formal propose-review-approve workflow, enabling structured API contract evolution with full version history and email notifications.",
+      "Created a one-click Code Generator that produces production-ready Axios code in React JS/TS with useState or Zustand — just swap the base URL when the real backend is ready.",
+      "Built role-based team collaboration with Project Manager, Frontend Dev, and Backend Dev roles — including ownership transfer and invitation management via email.",
+      "Implemented JSON import/export for endpoint collections, enabling backup, migration, and sharing of API contracts across projects."
+    ],
+    outComeImpact: [
+      "Eliminated frontend-backend blocking by providing instant, functional mock APIs — teams can develop in parallel from day one without waiting for backend implementation.",
+      "Reduced API miscommunication through a single source of truth for contracts, with structured change requests replacing informal Slack or email negotiations.",
+      "Delivered a fully deployed full-stack SaaS platform on Vercel with MongoDB Atlas, demonstrating end-to-end production architecture including auth, RBAC, email integration, and API key management.",
+      "Demonstrated advanced React patterns including code splitting with React.lazy, TanStack Query for server state, Zustand for client state, and a fully responsive dark-mode UI with Tailwind CSS."
+    ]
+  },
   {
     id: 1,
     thumbnail: '/img/projects/sales-thumbnail.png',
