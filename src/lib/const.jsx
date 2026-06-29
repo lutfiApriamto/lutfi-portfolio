@@ -1,6 +1,35 @@
 export const projectDataHome = [
-    {
-    id: 0,
+{
+  id: 1,
+  thumbnail: '/img/projects/travia-hero.png',
+  heroImage: '/img/projects/travia-hero.png',
+  title: "TRAVIA",
+  category: "Full Stack",
+  year: "2026",
+  tags: ["React 19", "Vite", "Node.js", "Express", "MongoDB", "Tailwind CSS v4", "TanStack Query", "Zustand", "Framer Motion"],
+  summary: "An AI-powered Indonesian travel booking platform that lets users discover tour packages, chat with an AI travel assistant to find the perfect trip, ags — from product browsing to payment — allin one place.",                                                                                                        viewDemo: true,
+  viewDemo: true,
+  demoURL: 'https://travia-lime.vercel.app/',
+  viewRepo: true,
+  urlRepo: 'https://github.com/lutfiApriamto/travel-ai-project',                                                                                                       
+  keyFeatures: [
+    "Built an animated AI chat interface on the hero section that simulates a real conversation — greeting the user, typing an intent, and surfacing matching prously to demonstrate the core valueproposition.",
+    "Designed a full booking flow with per-pelect participant count which is validated in real-time against remaining quota, with warnings and disabled CTAs when slots are exhausted — consistent across desktop and mobile.",
+    "Implemented a dual-path checkout system — Express Checkout for immediate payment and Add to Cart for deferred purchase — with a sticky mobile bottom bar ad each maintaining their own participant andadd-on state.",
+    "Built a rich product detail page featurth per-day meal previews, animatedexpand/collapse via Framer Motion, and a chip-grid includes/excludes section for at-a-glance trip clarity.",
+    "Developed a Wishlist system backed by ahenticated users save and remove productswith optimistic UI updates and toast notifications.",
+    "Architected a full authentication systeP-only refresh cookies, session restore onpage reload, and protected route guards — with redirect-back URLs preserved through the login flow.",
+    "Built a complete admin and agent backenoducts, categories, bookings, payments,users, roles, add-ons, tags, and more — designed API-first with RESTful conventions throughout."
+  ],
+  outComeImpact: [
+    "Delivered a production-grade full-stackend booking capability, real payment methodintegration, and a polished UI that adapts across mobile, tablet, and desktop.",
+    "Established a consistent design system tokens — a single palette change cascadesacross the entire UI — with full dark mode support via class-based theming.",
+    "Demonstrated advanced React architecturr server-state with cache invalidation,Zustand for cross-component client state, code-split routes, and Framer Motion orchestration for complex multanimations.",
+    "Shipped a distinctive visual identity with editorial typography (Fraunces serif + Plus Jakarta Sans), a true-orange brand color (#FF6B35), and layourity and conversion over decorativedefaults."
+  ]
+},
+  {
+    id: 2,
     thumbnail: '/img/projects/jomock-thumbnail.jpeg',
     heroImage: '/img/projects/jomock-thumbnail2.jpeg',
     title: "JO-MOCK",
@@ -29,7 +58,7 @@ export const projectDataHome = [
     ]
   },
   {
-    id: 1,
+    id: 3,
     thumbnail: '/img/projects/sales-thumbnail.png',
     heroImage: '/img/projects/sales-thumbnail.png',
     title: "SalesGen.ai",
@@ -56,7 +85,7 @@ export const projectDataHome = [
     ]
   },
   {
-    id: 2,
+    id: 4,
     thumbnail: '/img/projects/fro-thumbnail.png',
     heroImage: '/img/projects/fro-mes.png',
     title: "FRO MES Feature Redevelopment",
@@ -83,7 +112,7 @@ export const projectDataHome = [
     ]
   },
   {
-    id: 3,
+    id: 5,
     thumbnail: '/img/projects/ikan-thumbnail.png',
     heroImage: '/img/projects/ikan-thumbnail2.png',
     title: "Fish E-commerce Platform",
@@ -110,7 +139,7 @@ export const projectDataHome = [
     ]
   },
   {
-    id: 4,
+    id: 6,
     thumbnail: '/img/projects/bank-sampah-thumbnail.png',
     heroImage: '/img/projects/bank-sampah-thumbnail.png',
     title: "Trash Management Digitalization System",
@@ -137,7 +166,7 @@ export const projectDataHome = [
     ]
   },
   {
-    id: 5,
+    id: 7,
     thumbnail: '/img/projects/lepkom-thumbnail.png',
     heroImage: '/img/projects/lepkom-thumbnail.png',
     title: "Assistant Assessment Web App",
@@ -164,7 +193,7 @@ export const projectDataHome = [
     ]
   },
   {
-    id: 6,
+    id: 8,
     thumbnail: '/img/projects/gas-thumbnail.png',
     heroImage: '/img/projects/gas-thumbnail.png',
     title: "GAS Peduli Gizi",
@@ -190,7 +219,7 @@ export const projectDataHome = [
     ]
   },
   {
-    id: 7,
+    id: 9,
     thumbnail: '/img/projects/lutfiscript.png',
     heroImage: '/img/projects/lutfiscript.png',
     title: "LutfiScript",
